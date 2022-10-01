@@ -22,9 +22,9 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     />
-    <link rel="stylesheet" href="css/styles.css" />
-
     <link rel="stylesheet" href="css/style.css" />
+
+    <script src="js/script.js"></script>
   </head>
   <body>
     <div id="container">
@@ -37,8 +37,14 @@
       <!-- INICIO BUSCA -->
       <div class="form">
         <div id="pesquisa">
-          <input type="text" placeholder="Digite o Nome da Cidade" />
-          <button><i class="fa-solid fa-magnifying-glass"></i></button>
+          <input
+            type="text"
+            placeholder="Digite o Nome da Cidade"
+            id="cidade-input"
+          />
+          <button id="btn-pesquisa">
+            <i class="fa-solid fa-magnifying-glass"></i>
+          </button>
         </div>
       </div>
       <!-- FIM BUSCA -->
