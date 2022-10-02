@@ -24,7 +24,7 @@
     />
     <link rel="stylesheet" href="css/style.css" />
 
-    <script src="js/script.js"></script>
+    <script src="js/script.js" defer></script>
   </head>
   <body>
     <div id="container">
@@ -42,35 +42,34 @@
             placeholder="Digite o Nome da Cidade"
             id="cidade-input"
           />
-          <button id="btn-pesquisa">
+          <button id="search">
             <i class="fa-solid fa-magnifying-glass"></i>
           </button>
         </div>
       </div>
       <!-- FIM BUSCA -->
 
-      <div id="clima-dados">
-        <p id="temperatura"><span>38&deg;C</span></p>
+      <div id="clima-dados" class="ocultar">
+        <p id="temperatura"><span></span></p>
         <h2>
           <i class="fa-solid fa-location-dot"></i>
-          <span id="cidade"> São Paulo</span>
-          <img src="https://countryflagsapi.com/png/br" alt="" id="pais" />
+          <span id="cidade"></span>
+          <img src="" alt="" id="pais" />
         </h2>
 
         <div id="descricao-container">
-          <p id="descricao">Nublado</p>
-          <img src=" http://openweathermap.org/img/wn/01d@2x.png" alt=""
-          id=icone-clima" />
+          <p id="descricao"></p>
+          <img src="" alt="" id="icone-descricao" />
         </div>
 
         <div id="descricao-tempo">
           <div id="descricao-vento">
             <i class="fa-solid fa-wind"></i>
-            <span>23KM/H</span>
+            <span></span>
           </div>
           <div id="descricao-umidade">
             <i class="fa-solid fa-droplet"></i>
-            <span>2%</span>
+            <span></span>
           </div>
         </div>
       </div>
