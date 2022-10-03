@@ -11,10 +11,6 @@ body {
     no-repeat;
 }
 
-.ocultar {
-  display: none;
-}
-
 /* LOGO */
 
 #container {
@@ -131,4 +127,22 @@ button {
 #clima-dados #descricao-tempo #icone-clima {
   width: 100px;
   text-align: center;
+}
+
+
+.animar-tamanho {
+  animation: aparece-resul 2.5s;
+}
+
+.ocultar {
+  display: none;
+}
+
+@keyframes aparece-resul {
+  0% {
+    transform: translateX(0) scale(0.0);
+}
+100% {
+  transform: translateX(0px) scale(1.0);
+}
 }

@@ -3,6 +3,7 @@
 const apiChave = "98aa04dae87ee9ff1135a71b64fc07f2";
 const apiPaisURL = "https://countryflagsapi.com/png/";
 
+const FormularioElement = document.querySelector("#from");
 const cidadePesquisa = document.querySelector("#cidade-input");
 const btnPesquisa = document.querySelector("#search");
 
@@ -42,6 +43,7 @@ const mostrarClimaTempo = async (cidade) => {
   umidadeElement.innerText = `${dados.main.humidity} KM/H`;
 
   climaTempoElement.classList.remove("ocultar");
+  climaTempoElement.classList.add("animar-tamanho");
 };
 
 // Eventos
