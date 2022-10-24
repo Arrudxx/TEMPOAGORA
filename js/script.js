@@ -19,19 +19,6 @@ const ventoElement = document.querySelector("#descricao-tempo span");
 const umidadeElement = document.querySelector("#descricao-umidade span");
 
 // funções
-const obterCidadeViaCep = async (cidade) => {
-  const cep = fetch(`https://viacep.com.br/ws/${cidade}/json`); //faz o fetch
-
-  cep
-    .then((resolucao) => {
-      console.log(resolucao);
-      return resolucao.json(); //traz a resolução em json
-    })
-    .then((body) => {
-      const cidade = body.localidade; // puxa o copo com a localidade(cidade)
-      console.log(cidade);
-    });
-};
 
 const obterClimaTempo = async (cidade) => {
   const apiClimaUrl = `https://api.openweathermap.org/data/2.5/weather?q=${cidade}&units=metric&appid=${apiChave}&lang=pt_br`;
@@ -43,26 +30,22 @@ const obterClimaTempo = async (cidade) => {
 
 const mostrarClimaTempo = async (cidade) => {
   cidade = cidadePesquisa.value; //puxa o valor digitado para variavel cidade
-
   const dados = await obterClimaTempo(cidade);
-  const cidadeDoCep = await obterCidadeViaCep(cidade);
 
-  console.log(cidadeDoCep);
+  temperaturaElement.innerText = `${parseInt(dados.main.temp)}°C`;
+  cidadeElement.innerText = dados.name;
+  paisIcone.setAttribute("src", apiPaisURL + dados.sys.country);
+  descricaoElement.innerText = dados.weather[0].description;
+  descricaoIcone.setAttribute(
+    "src",
+    `http://openweathermap.org/img/wn/${dados.weather[0].icon}.png`
+  );
+  ventoElement.innerText = `${Math.trunc(dados.wind.speed)}KM/H`;
+  umidadeElement.innerText = `${dados.main.humidity} KM/H`;
 
-  // temperaturaElement.innerText = `${parseInt(dados.main.temp)}°C`;
-  // cidadeElement.innerText = dados.name;
-  // paisIcone.setAttribute("src", apiPaisURL + dados.sys.country);
-  // descricaoElement.innerText = dados.weather[0].description;
-  // descricaoIcone.setAttribute(
-  //   "src",
-  //   `http://openweathermap.org/img/wn/${dados.weather[0].icon}.png`
-  // );
-  // ventoElement.innerText = `${Math.trunc(dados.wind.speed)}KM/H`;
-  // umidadeElement.innerText = `${dados.main.humidity} KM/H`;
-
-  // climaTempoElement.classList.remove("ocultar");
-  // climaTempoElement.classList.add("aparece-resul");
-  // logo.classList.add("aparece-resul");
+  climaTempoElement.classList.remove("ocultar");
+  climaTempoElement.classList.add("aparece-resul");
+  logo.classList.add("aparece-resul");
 };
 
 // Eventos
@@ -82,11 +65,3 @@ cidadePesquisa.addEventListener("keyup", (e) => {
     mostrarClimaTempo();
   }
 });
-
-// function verificaNomeOuCep(cidade) {
-//   if (typeof cidade == "string") {
-//     console.log("é string");
-//   } else {
-//     console.log("é numero");
-//   }
-// }
