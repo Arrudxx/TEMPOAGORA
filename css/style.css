@@ -130,19 +130,22 @@ button {
 }
 
 
-.animar-tamanho {
-  animation: aparece-resul 2.5s;
+.aparece-resul {
+  animation: aparece-resul 3s forwards; 
 }
 
 .ocultar {
   display: none;
 }
 
+
 @keyframes aparece-resul {
   0% {
-    transform: translateX(0) scale(0.0);
+    opacity: 0;
+    transform: translate3d(0 -100px 0);
 }
 100% {
-  transform: translateX(0px) scale(1.0);
+  opacity: 1;
+    transform: translate3d(0, 0, 0);
 }
 }
