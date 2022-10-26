@@ -129,14 +129,120 @@ button {
   text-align: center;
 }
 
+#clima-dados-falha {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  animation: aparece-resul 2.5s forwards; 
+  border-radius: 10px;
+  padding: 1rem;
+  margin: 20px;
+  background-color: rgb(240, 240, 240);
+  max-width: 800px;rgb(221, 221, 221)
+  box-shadow: 2px 2px 3px rgb(68, 68, 68);
+}
+
+#clima-dados-falha img {
+  width: 6rem;
+  height: 6rem;
+  margin-bottom: 15px;
+}
+
+#clima-dados-falha h2 {
+  width: 300px;
+  text-align: center;
+}
+
+#clima-dados-falha p {
+  margin-top: 10px;
+  color: #375af8;
+}
 
 .aparece-resul {
-  animation: aparece-resul 3s forwards; 
+  animation: aparece-resul 2.5s forwards; 
 }
 
 .ocultar {
   display: none;
 }
+
+/* Mudanças de Tempo */
+
+
+
+.sete-manha {
+  background: linear-gradient(to bottom, #00a0fa, #02a3ff 20%, #415ee7, #ffdf29) no-repeat;
+}
+
+.nove-manha {
+  background: linear-gradient(to bottom, #00a0fa, #7db8da 20%, #375af8, #00a0fa)
+    no-repeat;
+}
+
+.doze-manha{
+  background: linear-gradient(to bottom, #0400ff, #7db8da 20%, #375af8, #00a0fa) no-repeat;
+}
+
+.tres-tarde {
+  background: linear-gradient(to bottom, #ffec03, #dabd7d 20%, #375af8, #00a0fa) no-repeat;
+}
+
+.cinco-tarde {
+  background: linear-gradient(to bottom, #fab900, #eb7855 20%, #f84037, #23242e) no-repeat;
+}
+
+.sete-noite {
+  background: linear-gradient(to bottom, #0d0c18, #180270 20%, #100040, #23242e) no-repeat
+}
+.nove-noite {
+  background: linear-gradient(to bottom, #0d0c18, #0d0628 20%, #0d0524, #020208) no-repeat
+}
+.doze-noite {
+  background: linear-gradient(to bottom, #000000, #07060a 20%, #050518, #020208) no-repeat;
+}
+.cinco-manha {
+  background: linear-gradient(to bottom, #9cd8fc, #e48f7556 20%, #f84037, #23242e) no-repeat}
+
+.estrelas{
+  
+	width: 3px;
+	height: 3px;
+	border-radius: 50%;
+	box-shadow: 5rem 2rem white,
+  40rem 30rem white,
+  80rem 2rem white,
+  30rem 10rem white,
+  35rem 7rem white,
+  9rem 20rem white,
+  60rem 25rem white,
+  78rem 37rem white,
+  7rem 29rem white,
+  55rem 2rem white,
+  59rem 8rem white;
+  animation: anim-stars 30s linear alternate infinite;
+  
+}
+
+.estrelas::after{
+  content: "";
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  box-shadow: 50px 30px white,
+    100px 80px white,
+    80px 120px white,
+    300px 20px white,
+    250px 130px white,
+    200px 50px white,
+    150px 100px white,
+    320px 100px white;
+}
+
+
+
+
+
+
 
 
 @keyframes aparece-resul {
@@ -148,4 +254,13 @@ button {
   opacity: 1;
     transform: translate3d(0, 0, 0);
 }
+}
+
+@keyframes anim-stars {
+  from {
+      transform: translateY(0px);
+  }
+  to {
+      transform: translateY(-150px);
+  }
 }

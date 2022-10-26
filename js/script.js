@@ -3,6 +3,7 @@
 const apiChave = "98aa04dae87ee9ff1135a71b64fc07f2";
 const apiPaisURL = "https://countryflagsapi.com/png/";
 
+const estrelas = document.querySelector(".estrelas");
 const divClimaFalha = document.querySelector("#clima-dados-falha");
 
 const FormularioElement = document.querySelector("#from");
@@ -61,6 +62,33 @@ const mostrarClimaTempo = async (cidade) => {
   logo.classList.add("aparece-resul");
 };
 
+function mudaFundoPelaHora() {
+  var horarioAtual = new Date().getHours();
+  const body = document.body;
+
+  console.log(horarioAtual);
+  if (7 <= horarioAtual && horarioAtual < 9) {
+    body.classList.add("nove-manha");
+  } else if (9 <= horarioAtual && horarioAtual < 12) {
+    body.classList.add("doze-manha");
+  } else if (12 <= horarioAtual && horarioAtual < 15) {
+    body.classList.add("tres-tarde");
+  } else if (17 <= horarioAtual && horarioAtual < 19) {
+    body.classList.add("cinco-tarde");
+  } else if (19 <= horarioAtual && horarioAtual < 21) {
+    body.classList.add("sete-noite");
+    estrelas.classList.remove("ocultar");
+  } else if (21 <= horarioAtual && horarioAtual < 0) {
+    body.classList.add("nove-noite");
+    estrelas.classList.remove("ocultar");
+  } else if (0 <= horarioAtual && horarioAtual < 5) {
+    body.classList.add("doze-noite");
+    estrelas.classList.remove("ocultar");
+  } else {
+    body.classList.add("cinco-manha");
+  }
+}
+
 // Eventos
 
 //Evento para clck no botão
@@ -78,3 +106,5 @@ cidadePesquisa.addEventListener("keyup", (e) => {
     mostrarClimaTempo();
   }
 });
+
+mudaFundoPelaHora();
