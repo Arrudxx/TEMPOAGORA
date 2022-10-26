@@ -3,6 +3,8 @@
 const apiChave = "98aa04dae87ee9ff1135a71b64fc07f2";
 const apiPaisURL = "https://countryflagsapi.com/png/";
 
+const divClimaFalha = document.querySelector("#clima-dados-falha");
+
 const FormularioElement = document.querySelector("#from");
 const divPesquisa = document.querySelector("#pesquisa");
 const cidadePesquisa = document.querySelector("#cidade-input");
@@ -28,9 +30,20 @@ const obterClimaTempo = async (cidade) => {
   return dados; // retorno os dados
 };
 
+function pesquisaNaoEncontrada(erro) {
+  if (erro.cod == 404) {
+    logo.classList.add("aparece-resul");
+    climaTempoElement.classList.add("ocultar");
+    divClimaFalha.style.display = "flex";
+  } else {
+    divClimaFalha.style.display = "none";
+  }
+}
+
 const mostrarClimaTempo = async (cidade) => {
   cidade = cidadePesquisa.value; //puxa o valor digitado para variavel cidade
   const dados = await obterClimaTempo(cidade);
+  pesquisaNaoEncontrada(dados);
 
   temperaturaElement.innerText = `${parseInt(dados.main.temp)}°C`;
   cidadeElement.innerText = dados.name;
