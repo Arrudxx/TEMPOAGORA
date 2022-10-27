@@ -4,6 +4,7 @@ const apiChave = "98aa04dae87ee9ff1135a71b64fc07f2";
 const apiPaisURL = "https://countryflagsapi.com/png/";
 
 const estrelas = document.querySelector(".estrelas");
+const ocultarEstrelas = document.querySelector(".ocultar-estrelas");
 const divClimaFalha = document.querySelector("#clima-dados-falha");
 
 const FormularioElement = document.querySelector("#from");
@@ -28,6 +29,7 @@ const obterClimaTempo = async (cidade) => {
 
   const res = await fetch(apiClimaUrl); // faz a fetch usando o "apiClimaUrl"
   const dados = await res.json(); //transforma a response do fetch em json
+  console.log(dados);
   return dados; // retorno os dados
 };
 
@@ -77,13 +79,13 @@ function mudaFundoPelaHora() {
     body.classList.add("cinco-tarde");
   } else if (19 <= horarioAtual && horarioAtual < 21) {
     body.classList.add("sete-noite");
-    estrelas.classList.remove("ocultar");
-  } else if (21 <= horarioAtual && horarioAtual < 0) {
+    estrelas.classList.remove("ocultar-estrelas");
+  } else if (21 <= horarioAtual && horarioAtual <= 23) {
     body.classList.add("nove-noite");
-    estrelas.classList.remove("ocultar");
+    estrelas.classList.remove("ocultar-estrelas");
   } else if (0 <= horarioAtual && horarioAtual < 5) {
     body.classList.add("doze-noite");
-    estrelas.classList.remove("ocultar");
+    estrelas.classList.remove("ocultar-estrelas");
   } else {
     body.classList.add("cinco-manha");
   }
