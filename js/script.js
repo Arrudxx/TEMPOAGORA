@@ -29,7 +29,6 @@ const obterClimaTempo = async (cidade) => {
 
   const res = await fetch(apiClimaUrl); // faz a fetch usando o "apiClimaUrl"
   const dados = await res.json(); //transforma a response do fetch em json
-  console.log(dados);
   return dados; // retorno os dados
 };
 
@@ -43,10 +42,22 @@ function pesquisaNaoEncontrada(erro) {
   }
 }
 
+function trataHorario(dados) {
+  const timezone = {
+    //FAZER METODOS COM O NOMES DA TIMEZONE E COM RETURN O VALOR DAS TIMEZONES
+  };
+
+  console.log(dados.timezone);
+  let horarioAtual = new Date().getHours();
+  console.log(horarioAtual);
+  //FAZER FOREACH PELO OBJETO TIMEZONE E CRIAR LOGICA PARA DADOS.TIMEZONE BATER COM TIMEZONE.METHOD E ASSIM ALTERAR O HORARIO ATUAL PARA HOARARIO LOCAL DA CIDADE
+}
+
 const mostrarClimaTempo = async (cidade) => {
   cidade = cidadePesquisa.value; //puxa o valor digitado para variavel cidade
   const dados = await obterClimaTempo(cidade);
   pesquisaNaoEncontrada(dados);
+  trataHorario(dados);
 
   temperaturaElement.innerText = `${parseInt(dados.main.temp)}°C`;
   cidadeElement.innerText = dados.name;
@@ -65,10 +76,9 @@ const mostrarClimaTempo = async (cidade) => {
 };
 
 function mudaFundoPelaHora() {
-  var horarioAtual = new Date().getHours();
+  let horarioAtual = new Date().getHours();
   const body = document.body;
 
-  console.log(horarioAtual);
   if (7 <= horarioAtual && horarioAtual < 9) {
     body.classList.add("nove-manha");
   } else if (9 <= horarioAtual && horarioAtual < 12) {
